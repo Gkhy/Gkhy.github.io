@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src='https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{margin:0 auto;
+            display: flex;
+            justify-content: center;
+            padding:0 200px;
+            border-radius: 25%;
+            background-color: bisque;
+            background-clip:content-box;
+            margin:1rem;
+
+        }
+        .circle{
+            border-radius: 50%;
+            color:white;
+            background-color: yellow;
+            width: 5rem;
+            height: 5rem;
+            text-align: center;
+            line-height: 5rem;
+            margin:5px;
+        }
+        .center{
+            text-align:center;
+        }
+        .btn{margin:0 auto;
+        }
+        .flex{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="center">lotto landom</div>
+
+    <div id="content"></div>
+    <div class='flex'><button id="btn" class="btn">lotto start!</button></div>
+
+
+    <script>
+        const btn= document.querySelector('#btn')
+
+        btn.addEventListener('click',function(){
+            const container=document.createElement('div')
+            container.classList.add('container')
+            const content=document.querySelector('#content')
+            content.appendChild(container)
+            for(let i=0;i<6;i++)
+            {const ball=document.createElement('div')
+            ball.innerText=_.sampleSize(_.range(1,46),1)
+            ball.classList.add('circle')
+            if (11<=ball.innerText && ball.innerText<=20){
+                ball.style.backgroundColor = 'blue';
+            }
+            if (21<=ball.innerText && ball.innerText<=30){
+                ball.style.backgroundColor = 'red';
+            }
+            if (31<=ball.innerText && ball.innerText<=40){
+                ball.style.backgroundColor = 'grey';
+            }
+            if (41<=ball.innerText && ball.innerText<=45){
+                ball.style.backgroundColor = 'green';
+            }
+            container.appendChild(ball)}
+
+        })
+
+
+
+    </script>
+</body>
+</html>
